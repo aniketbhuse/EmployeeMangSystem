@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using EmployeeMangSystem.Models;
 
 namespace EmployeeMangSystem.Controllers
@@ -118,6 +119,30 @@ namespace EmployeeMangSystem.Controllers
         public ActionResult Login()
         {
             return View();
+        }       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                bool IsValidUser = db.Users
+                .Any(u => u.UserName.ToLower() == user
+                .UserName.ToLower() && 
+                u.Password == user.Password);
+                if (IsValidUser)
+                {
+                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    return RedirectToAction("Index");
+                }
+            }
+            ModelState.AddModelError("", "Invalid UserName or Password");
+            return View();
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
         }
            
         protected override void Dispose(bool disposing)

@@ -20,5 +20,6 @@ namespace EmployeeMangSystem.Models
         }
 
         public System.Data.Entity.DbSet<EmployeeMangSystem.Models.Employee> Employees { get; set; }
+        public System.Data.Entity.DbSet<EmployeeMangSystem.Models.User> Users { get; set; }
     }
 }
