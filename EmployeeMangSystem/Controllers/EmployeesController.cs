@@ -20,6 +20,10 @@ namespace EmployeeMangSystem.Controllers
         {
             return View(db.Employees.ToList());
         }
+        public ActionResult EmpDetails()
+        {
+            return View(db.Employees.ToList());
+        }
 
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
@@ -142,7 +146,7 @@ namespace EmployeeMangSystem.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
            
         protected override void Dispose(bool disposing)

@@ -22,23 +22,22 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contact", "About", "Home")</li>
-                    <li>@Html.ActionLink("Employee", "Index", "Employees")</li>
-                  
+                    <li>@Html.ActionLink("Emp Details", "Index", "Employees")</li>
+                    <li>@Html.ActionLink("Admin Login", "Login", "Employees")</li>
+
                     @if (User.Identity.IsAuthenticated)
-            {
+                    {
                         <li>
                             <div class="dropdown=menu" aria-labelledby="navbarDropdown">
                                 <a class=" dropdown-item" href="=#">My Account</a>
                                 <a class="dropdown-item" href="#">Edit Profile</a>
                                 <div class="dropdown-divider"></div>
-                                @Html.ActionLink("Logout","Logout","Home", new {@class = "nav-link text-center text-uppercase"})
+                                @Html.ActionLink("Logout", "Logout", "Home", new { @class = "nav-link text-center text-uppercase" })
                             </div>
                         </li>
-            }
-            else
-            {
-                <li>@Html.ActionLink("Login","Login","Home",new { @class = "nav-link float-left" })</li>
-            }
+                    }
+
+                
                 </ul>
             </div>
         </div>
@@ -47,7 +46,7 @@
         @RenderBody()
         <hr />
         <footer>
-          <strong><p>&copy; @DateTime.Now.Year - My Employee Mangement System</p> </strong>  
+            <p><strong>&copy; @DateTime.Now.Year - My Employee Mangement System </strong> </p>  
         </footer>
     </div>
 
